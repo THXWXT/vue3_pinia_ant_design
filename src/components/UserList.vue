@@ -10,7 +10,7 @@
           <button @click="deleteUser(user.id)">Delete</button>
         </li>
       </ul>
-      <UserForm />
+      <!-- <UserForm /> -->
     </div>
   </template>
   
@@ -35,7 +35,7 @@
       };
 
       const addUser = () => {
-        router.push({ name: 'UserUpdate'});
+        router.push({ name: 'UserAdd'});
       };
   
       const deleteUser = (userId) => {
