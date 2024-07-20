@@ -7,14 +7,14 @@
       />
     </div>
     <a-menu theme="dark" mode="horizontal" :default-selected-keys="['1']">
-      <a-menu-item key="1" @click="navigateTo('/')"><HomeOutlined /> {{ `User list`}}</a-menu-item>
+      <a-menu-item key="1" @click="navigateTo('/')"><UnorderedListOutlined /> {{ `User list`}}</a-menu-item>
       <a-menu-item key="2" @click="navigateTo('/update/')"><UserOutlined /> {{ `Add user` }}</a-menu-item>
     </a-menu>
   </a-layout-header>
 </template>
 
 <script>
-import { WindowsOutlined, UserOutlined, InfoCircleOutlined , HomeOutlined} from '@ant-design/icons-vue';
+import { WindowsOutlined, UserOutlined, InfoCircleOutlined , HomeOutlined,UnorderedListOutlined} from '@ant-design/icons-vue';
 import { useRouter } from 'vue-router';
 
 export default {
@@ -23,7 +23,8 @@ export default {
     WindowsOutlined,
     UserOutlined,
     InfoCircleOutlined,
-    HomeOutlined
+    HomeOutlined,
+    UnorderedListOutlined
   },
   setup() {
     const router = useRouter();

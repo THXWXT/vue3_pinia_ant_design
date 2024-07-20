@@ -94,7 +94,7 @@ export default {
       id: Date.now().toString(),
       name: "",
       email: "",
-      phoneNumber: "",
+      phoneNumber: "0",
       status: 1,
       role: "user",
       createdAt: "",

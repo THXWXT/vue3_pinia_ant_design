@@ -52,7 +52,7 @@ import { useRouter } from "vue-router";
 import { computed, ref } from "vue";
 import { Button, Table, Modal } from "ant-design-vue";
 import { format } from "date-fns";
-
+import { message } from "ant-design-vue";
 export default {
   components: {
     "a-button": Button,
@@ -79,6 +79,7 @@ export default {
       if (currentUserId.value !== null) {
         userStore.deleteUser(currentUserId.value);
         isModalVisible.value = false;
+        message.success('Delete user successfully!')
       }
     };
 
@@ -146,6 +147,7 @@ export default {
       isModalVisible,
       format,
       viewUser,
+      message
     };
   },
 };
