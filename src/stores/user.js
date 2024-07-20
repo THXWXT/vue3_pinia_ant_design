@@ -11,7 +11,7 @@ export const useUserStore = defineStore("user", {
         status: 1,
         role: "user",
         createdAt: "2024-07-21T10:00:00Z",
-        phoneNumber: "+1234567890",
+        phoneNumber: "1234567890",
       },
       {
         id: "2",
@@ -21,7 +21,7 @@ export const useUserStore = defineStore("user", {
         status: 2,
         role: "admin",
         createdAt: "2024-07-21T10:00:00Z",
-        phoneNumber: "+1234567890",
+        phoneNumber: "1234567890",
       },
       {
         id: "3",
@@ -31,7 +31,7 @@ export const useUserStore = defineStore("user", {
         status: 1,
         role: "superAdmin",
         createdAt: "2024-07-21T10:00:00Z",
-        phoneNumber: "+1234567890",
+        phoneNumber: "1234567890",
       },
       {
         id: "4",
@@ -41,7 +41,7 @@ export const useUserStore = defineStore("user", {
         status: 1,
         role: "user",
         createdAt: "2024-07-21T10:00:00Z",
-        phoneNumber: "+1234567890",
+        phoneNumber: "1234567890",
       },
       {
         id: "5",
@@ -51,7 +51,7 @@ export const useUserStore = defineStore("user", {
         status: 2,
         role: "user",
         createdAt: "2024-07-21T10:00:00Z",
-        phoneNumber: "+1234567890",
+        phoneNumber: "1234567890",
       }, 
     ],
   }),
