@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import UserList from '../components/UserList.vue'
 import UserUpdate from '@/views/UserUpdate.vue'
 import UserAdd from '@/views/UserAdd.vue'
+import UserView from '@/components/UserView.vue'
 const routes = [
   {
     path: '/',
@@ -18,6 +19,11 @@ const routes = [
     path: '/update/',
     name: 'UserAdd',
     component: UserAdd
+  },
+  {
+    path: '/user/:id',
+    name: 'UserView',
+    component: UserView
   }
 ];
 

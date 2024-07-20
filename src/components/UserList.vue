@@ -5,6 +5,11 @@
       <template #no="{ record, index }">
         {{ index + 1 }}
       </template>
+      <template #name="{ record }">
+        <a  @click="viewUser(record.id)">
+          {{ record.name }}
+        </a>
+      </template>
       <template #action="{ record }">
         <a-space>
           <a-button @click="editUser(record.id)" type="primary"
@@ -16,13 +21,22 @@
         </a-space>
       </template>
       <template #status="{ record }">
-        {{ record.status ? `Active` : `Inactive` }}
+        <a-tag :color="record.status === 1 ? 'green' : 'red'">
+          {{ record.status === 1 ? `Active` : `Inactive` }}
+        </a-tag>
+      </template>
+      <template #createdAt="{ record }">
+        {{
+          record.createdAt
+            ? format(new Date(record.createdAt), "yyyy-MM-dd HH:mm:ss")
+            : "-"
+        }}
       </template>
     </a-table>
 
     <a-modal
       v-model:visible="isModalVisible"
-      title="Do you want to delete"
+      title="Do you want to delete?"
       @ok="handleDelete"
       @cancel="handleCancel"
     >
@@ -37,6 +51,7 @@ import { useUserStore } from "../stores/user";
 import { useRouter } from "vue-router";
 import { computed, ref } from "vue";
 import { Button, Table, Modal } from "ant-design-vue";
+import { format } from "date-fns";
 
 export default {
   components: {
@@ -79,6 +94,10 @@ export default {
       router.push({ name: "UserAdd" });
     };
 
+    const viewUser = (userId) => {
+      router.push({ name: "UserView", params: { id: userId } });
+    };
+
     const columns = [
       {
         title: "No",
@@ -90,6 +109,7 @@ export default {
         title: "Name",
         dataIndex: "name",
         key: "name",
+        slots: { customRender: "name" },
       },
       {
         title: "Email",
@@ -101,6 +121,12 @@ export default {
         dataIndex: "status",
         key: "status",
         slots: { customRender: "status" },
+      },
+      {
+        title: "Created at",
+        dataIndex: "createdAt",
+        key: "createdAt",
+        slots: { customRender: "createdAt" },
       },
       {
         title: "Actions",
@@ -118,6 +144,8 @@ export default {
       handleDelete,
       handleCancel,
       isModalVisible,
+      format,
+      viewUser,
     };
   },
 };

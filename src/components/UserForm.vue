@@ -13,13 +13,16 @@
         />
       </a-form-item>
       <a-form-item label="Status" required>
-        <a-select
-          ref="select"
-          v-model:value="user.status"
-          style="width: 100%"
-        >
+        <a-select ref="select" v-model:value="user.status" style="width: 100%">
           <a-select-option :value="1">Active</a-select-option>
           <a-select-option :value="2">Inactive</a-select-option>
+        </a-select>
+      </a-form-item>
+      <a-form-item label="role" required>
+        <a-select ref="select" v-model:value="user.role" style="width: 100%">
+          <a-select-option value="user">User</a-select-option>
+          <a-select-option value="admin">Admin</a-select-option>
+          <a-select-option value="superAdmin">Super Admin</a-select-option>
         </a-select>
       </a-form-item>
       <a-form-item>
@@ -51,6 +54,7 @@ import { useUserStore } from "../stores/user";
 import { ref, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { Modal } from "ant-design-vue";
+import { formatISO } from 'date-fns';
 
 export default {
   props: ["userId"],
@@ -63,7 +67,10 @@ export default {
       id: Date.now().toString(),
       name: "",
       email: "",
-      status:1
+      status: 1,
+      role:"user",
+      phoneNumber:"",
+      createdAt:"",
     });
 
     const isEditMode = computed(() => !!props.userId);
@@ -94,6 +101,7 @@ export default {
       if (isEditMode.value) {
         userStore.updateUser(user.value);
       } else {
+        user.value.createdAt = formatISO(new Date()); 
         userStore.addUser(user.value);
       }
       router.push("/");
@@ -111,6 +119,7 @@ export default {
       handleCancel,
       isModalVisible,
       goBack,
+      formatISO
     };
   },
 };
